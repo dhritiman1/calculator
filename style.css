@@ -1,0 +1,186 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+* {
+    font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@font-face {
+    font-family: 'Digital7';
+    src: url('font/Digital7-1e1Z.eot');
+    src: url('font/Digital7-1e1Z.eot?#iefix') format('embedded-opentype'),
+        url('font/Digital7-1e1Z.woff') format('woff'),
+        url('font/Digital7-1e1Z.woff2') format('woff2'),
+        url('font/Digital7-1e1Z.ttf') format('truetype'),
+        url('font/Digital7-1e1Z.svg') format('svg');
+    ;
+
+}
+
+body {
+    background-color: #222;
+}
+
+* {
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 2px 2px 1px var(--color-accent-300);
+}
+
+:root {
+    --color-accent-000: #e6c4ab;
+    --color-accent-100: #d8b091;
+    --color-accent-300: #753b00;
+    --color-accent-500: #4d2600;
+    --color-accent-900: #111111;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.calculator-frame {
+    width: 400px;
+    height: 600px;
+    border-radius: 3%;
+    background-color: var(--color-accent-300);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 8px var(--color-accent-500);
+}
+
+.calculator-display {
+    height: 100px;
+    width: 350px;
+    background-color: var(--color-accent-000);
+    display: flex;
+    flex-direction: column;
+    border-radius: 2%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    text-align: right;
+    box-shadow: 4px 4px 8px var(--color-accent-500);
+    font-family: 'Digital7';
+}
+
+.result {
+    font-size: 1rem;
+}
+
+.result,
+.current-number {
+    width: 330px;
+    height: 35px;
+    letter-spacing: 2px;
+}
+
+
+button {
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    background-color: var(--color-accent-100);
+    box-shadow: 4px 4px 0 var(--color-accent-500);
+}
+
+button:active {
+    background-color: var(--color-accent-000);
+    box-shadow: 2px 2px 0 var(--color-accent-900);
+    text-shadow: 1px 1px 1px var(--color-accent-300);
+}
+
+.button-set-2,
+.button-set-1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.clear,
+.delete {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    width: 170px;
+    height: 40px;
+    border-radius: 5%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.button-set-2>button {
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    border-radius: 5%;
+}
+
+.footer {
+    height: 30px;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 0;
+}
