@@ -13,10 +13,21 @@ let currOperator = '';
 const buttons = document.querySelectorAll('.button-no');
 buttons.forEach((button) => {
     button.addEventListener('click', function (e) {
-        displayResult.textContent += button.id;
-        displayCurrNo.textContent += button.id;
-        number += button.id;
-        console.log(number);
+        if (number.includes('.')) {
+            if (button.id === '.') {
+                displayResult.textContent += '';
+                displayCurrNo.textContent += '';
+                number += ''
+            }else{
+                displayResult.textContent += button.id;
+                displayCurrNo.textContent += button.id;
+                number += button.id;
+            }
+        }else{
+            displayResult.textContent += button.id;
+            displayCurrNo.textContent += button.id;
+            number += button.id;
+        }
     });
 });
 
