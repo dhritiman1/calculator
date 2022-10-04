@@ -23,8 +23,17 @@ buttons.forEach((button) => {
 const operators = document.querySelectorAll('.operator');
 operators.forEach((operator) => {
     operator.addEventListener('click', () => {
+        let displayResultTextContent = displayResult.textContent;
+        if (displayResultTextContent.includes('+') ||
+            displayResultTextContent.includes('-') ||
+            displayResultTextContent.includes('*') ||
+            displayResultTextContent.includes('/')
+        ) {
+            displayResult.textContent += '';
+        } else {
+            displayResult.textContent += operator.id;
+        }
 
-        displayResult.textContent += operator.id;
         displayCurrNo.textContent = '';
         if (result != '') {
             a = result;
