@@ -18,12 +18,12 @@ buttons.forEach((button) => {
                 displayResult.textContent += '';
                 displayCurrNo.textContent += '';
                 number += ''
-            }else{
+            } else {
                 displayResult.textContent += button.id;
                 displayCurrNo.textContent += button.id;
                 number += button.id;
             }
-        }else{
+        } else {
             displayResult.textContent += button.id;
             displayCurrNo.textContent += button.id;
             number += button.id;
@@ -36,7 +36,6 @@ operators.forEach((operator) => {
     operator.addEventListener('click', () => {
         let displayResultTextContent = displayResult.textContent;
         if (displayResultTextContent.includes('+') ||
-            displayResultTextContent.includes('-') ||
             displayResultTextContent.includes('*') ||
             displayResultTextContent.includes('/')
         ) {
@@ -83,7 +82,7 @@ function calculate(a, currOperator, b) {
     }
     else if (currOperator === '/') {
         result = a / b;
-    } else if (currOperator === '=') {
+    } else {
         displayCurrNo.textContent = '';
         a = '';
         b = '';
@@ -92,7 +91,8 @@ function calculate(a, currOperator, b) {
     displayResult.textContent = (Math.round(result * 10000000)) / 10000000;
 }
 
-clear.addEventListener('click', function (e) {
+clear.addEventListener('click', clearAll);
+function clearAll(e) {
     displayCurrNo.textContent = '';
     displayResult.textContent = '';
     number = '';
@@ -100,12 +100,33 @@ clear.addEventListener('click', function (e) {
     currOperator = '';
     a = '';
     b = '';
-});
+}
 
-del.addEventListener('click', function (e) {
+del.addEventListener('click', backspace);
+function backspace(e) {
     let currNO = displayCurrNo.textContent;
     let currRes = displayResult.textContent;
     displayCurrNo.textContent = currNO.substring(0, currNO.length - 1);
     displayResult.textContent = currRes.substring(0, currRes.length - 1);
     number = currNO.substring(0, currNO.length - 1);
+}
+
+//keyboard support
+
+document.addEventListener('keydown', (event) => {
+    if(!isNaN(event.key) && event.key !== ' '){
+		document.getElementById(`${event.key}`).click();
+	} else if (['/', '+', '-', '*','Enter','='].includes(event.key)) {
+        if(event.key === 'Enter' || event.key === '=') {
+            document.getElementsByClassName('operator equals').click();
+        }else {
+            document.getElementById(`${event.key}`).click();
+        }
+    } else if (event.key === 'Delete') {
+        clearAll();
+    } else if (event.key === 'Backspace') {
+        backspace();
+    }else if(event.key === '.'){
+        document.getElementById('.').click();
+    }
 });
